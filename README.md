@@ -224,10 +224,14 @@ iface eth0 inet dhcp
 
 ```bash
 raspi$ cat /etc/network/interfaces.d/eth0 
+$ cat /etc/network/interfaces.d/eth0 
 allow-hotplug eth0
 #iface eth0 inet dhcp
 iface eth0 inet static
-address {your-static-ip}
-gateway {your-gateway-ip}
-domain_name_servers={your-DNS-ip}
+address 192.168.40.103
+network 192.168.40.0
+netmask 255.255.255.0
+broadcast 192.168.40.255
+gateway 192.168.40.1
+domain_name_servers=172.16.0.35
 ```
