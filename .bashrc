@@ -20,6 +20,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 # git
+export GIT_PAGER='lv -c'
 alias gitb='git b'
 alias gits='git s'
 alias gitd='git d'
