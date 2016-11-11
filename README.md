@@ -147,10 +147,10 @@ Raspberry Pi 3 Model B ((Element14版)
     
     ```bash
     osx$ ssh pirate@black-pearl.local
-    The authenticity of host 'raspineko.local (fe80::ba27:ebff:fecd:6f26%en0)' can't be established.
+    The authenticity of host 'black-pearl.local (fe80::ba27:ebff:fecd:6f26%en0)' can't be established.
     ECDSA key fingerprint is SHA256:VoQc32UNxU2JlB34zyW6akm67acZC1PyDgKrmu+kkSM.
     Are you sure you want to continue connecting (yes/no)? yes
-    Warning: Permanently added 'raspineko.local,fe80::ba27:ebff:fecd:6f26%en0' (ECDSA) to the list of known hosts.
+    Warning: Permanently added 'black-pearl.local,fe80::ba27:ebff:fecd:6f26%en0' (ECDSA) to the list of known hosts.
     pirate@black-pearl.local's password:
   
     HypriotOS (Debian GNU/Linux 8)
@@ -166,3 +166,68 @@ Raspberry Pi 3 Model B ((Element14版)
     HypriotOS/armv7: pirate@black-pearl in ~
     $ 
     ```
+
+# デフォルトでインストール済みのコマンド
+
+## docker関連
+
+* docker
+* docker-containerd
+* docker-containerd-shim
+* docker-proxy
+* dockerd                 
+* docker-compose
+* docker-containerd-ctr
+* docker-machine
+* docker-runc             
+
+### docker
+
+```bash
+raspi$ docker -v
+Docker version 1.12.2, build bb80604
+```
+
+### docker-compose
+
+```bash
+raspi$ docker-compose -v
+docker-compose version 1.8.1, build 878cff1 
+```
+
+## その他
+
+### apt
+
+```bash
+raspi$ apt --version
+apt 1.0.9.8.3 for armhf compiled on Apr  2 2016 16:38:14
+```
+
+# 固定IPアドレスを設定する
+
+諸事情により、IPアドレスを:
+
+* 無線LANはDHCPで取得
+* 有線LANは固定IPに設定
+
+したい。
+HypriotはRasbianベースなので、その辺の知識が使えます。
+
+```bash
+raspi$ cat /etc/network/interfaces.d/eth0 
+allow-hotplug eth0
+iface eth0 inet dhcp
+```
+
+以下のように修正
+
+```bash
+raspi$ cat /etc/network/interfaces.d/eth0 
+allow-hotplug eth0
+#iface eth0 inet dhcp
+iface eth0 inet static
+address {your-static-ip}
+gateway {your-gateway-ip}
+domain_name_servers={your-DNS-ip}
+```
