@@ -1,0 +1,30 @@
+[user]
+    name = taturou
+    email = taturou@gmail.com
+
+[alias]
+    ch = checkout
+    co = commit
+    s = status
+    b = branch --column
+    current-branch = rev-parse --abbrev-ref HEAD
+    cb = rev-parse --abbrev-ref HEAD
+    bc = rev-parse --abbrev-ref HEAD
+    l = log --graph --decorate
+    ls = log --name-status --graph --decorate
+#   la = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --decorate
+    la = log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m<%an>%x20%s"
+    d = diff
+    dl = diff --name-status
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = auto
+
+[core]
+    autocrlf = false
+    safecrlf = false
+    editor = /usr/bin/vi -c \"set fenc=utf-8\"
