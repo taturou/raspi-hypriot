@@ -204,6 +204,13 @@ raspi$ apt --version
 apt 1.0.9.8.3 for armhf compiled on Apr  2 2016 16:38:14
 ```
 
+### git
+
+```bash
+raspi$ git --version
+git version 2.1.4
+```
+
 # 固定IPアドレスを設定する
 
 諸事情により、IPアドレスを:
@@ -224,7 +231,6 @@ iface eth0 inet dhcp
 
 ```bash
 raspi$ cat /etc/network/interfaces.d/eth0 
-$ cat /etc/network/interfaces.d/eth0 
 allow-hotplug eth0
 #iface eth0 inet dhcp
 iface eth0 inet static
@@ -235,3 +241,22 @@ broadcast 192.168.40.255
 gateway 192.168.40.1
 domain_name_servers=172.16.0.35
 ```
+# DockerUIでdockerの状態を見る
+
+DockerUI、マジハンパネー！
+てことで。
+
+やり方は [dockerhub/hypriot/rpi-dockerui](https://hub.docker.com/r/hypriot/rpi-dockerui/) を見れば説明いらず
+
+```bash
+raspi $ docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock hypriot/rpi-dockerui
+Unable to find image 'hypriot/rpi-dockerui:latest' locally
+latest: Pulling from hypriot/rpi-dockerui
+f550508d4a51: Pull complete 
+a3ed95caeb02: Pull complete 
+Digest: sha256:6e245629d222e15e648bfc054b9eb24ac253b1f607d3dd513491dd9d5d272cfb
+Status: Downloaded newer image for hypriot/rpi-dockerui:latest
+a8892553dc86870856e49679ac4d0d3d0e522154183d9e534f5e8fd5fdc7e721
+```
+
+いやぁ、dockerの時代に生まれてよかった。
