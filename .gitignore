@@ -1,4 +1,6 @@
+*.swp
 /.bash_history
 /.bash_logout
 /.bash_prompt
+/.gem/
 /.lesshst
