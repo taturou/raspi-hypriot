@@ -28,3 +28,6 @@
     autocrlf = false
     safecrlf = false
     editor = /usr/bin/vi -c \"set fenc=utf-8\"
+
+[push]
+    default = matching
