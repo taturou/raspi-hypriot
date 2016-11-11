@@ -260,3 +260,46 @@ a8892553dc86870856e49679ac4d0d3d0e522154183d9e534f5e8fd5fdc7e721
 ```
 
 いやぁ、dockerの時代に生まれてよかった。
+
+# itamae をインストールする
+
+itamae、必要ですよね。
+Hypriotにはrubyが入っていないので、まずはそこからです。
+
+1. localeを設定する
+
+    デフォルトのままだと、perlがwarningを吐くので、localeを ja_JP.UTF-8 に設定する
+    なんでperlの話をするかというと、`apt-get install` でperlが走るから。
+
+    ```bash
+    raspi$ sudo locale-gen ja_JP.UTF-8
+    Generating locales (this might take a while)...
+      en_US.UTF-8... done
+    Generation complete.
+    HypriotOS/armv7: pirate@raspiNeko in ~ on master*
+    raspi$ sudo dpkg-reconfigure locales
+    ...(略)...ここで ja_JP.UTF-8 を選択する。
+    Generating locales (this might take a while)...
+      en_US.UTF-8... done
+      ja_JP.UTF-8... done
+    Generation complete.
+```
+
+2. rubyをインストールする
+
+    ```bash
+    raspi$ sudo apt-get update
+    raspi$ sudo apt-get install -y ruby
+    ...(略)...
+    raspi$ ruby -v
+    ruby 2.1.5p273 (2014-11-13) [arm-linux-gnueabihf]
+    ```
+
+3. itamaeをインストールする
+
+    ```bash
+    raspi$ sudo gem install itamae
+    ...(略)...
+    raspi$ $ itamae version
+    Itamae v1.9.9
+    ```
