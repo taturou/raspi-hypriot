@@ -239,8 +239,19 @@ network 192.168.40.0
 netmask 255.255.255.0
 broadcast 192.168.40.255
 gateway 192.168.40.1
-domain_name_servers=172.16.0.35
+dns-nameservers 8.8.8.8
+dns-search ESOL.CO.JP
 ```
+
+ただ、この設定だと `/etc/resolv.conf` が変更されない。なぜ？
+しょうがないから直接設定。
+
+```bash
+$ cat /etc/resolv.conf
+nameserver 8.8.8.8
+search ESOL.CO.JP
+```
+
 # DockerUIでdockerの状態を見る
 
 DockerUI、マジハンパネー！
