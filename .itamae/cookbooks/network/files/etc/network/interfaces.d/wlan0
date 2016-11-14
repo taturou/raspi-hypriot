@@ -1,0 +1,6 @@
+allow-hotplug wlan0
+
+auto wlan0
+iface wlan0 inet dhcp
+  wpa-ssid NEKO_KONEKO
+  wpa-psk 577c98474b1b52f7add06f00e6bdc2a7c31e0f5e52415de9d496c87f08bf9ea8
